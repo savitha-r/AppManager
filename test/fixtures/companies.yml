@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  phone: MyString
+  is_active: false
+  max_admin: 1
+
+two:
+  name: MyString
+  address: MyString
+  phone: MyString
+  is_active: false
+  max_admin: 1
