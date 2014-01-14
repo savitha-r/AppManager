@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 9.99
+  type: 
+  no_of_downloads: 1
+  download_type: MyString
+
+two:
+  number: 9.99
+  type: 
+  no_of_downloads: 1
+  download_type: MyString
