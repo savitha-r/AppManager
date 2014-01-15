@@ -14,8 +14,8 @@ AppManager::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   root to: "home#index"
-  get 'sign_in' => 'sessions#sign_in'
-  get 'sign_out' => 'sessions#sign_out'
+  get 'sign_in' => 'sessions#create'
+  get 'sign_out' => 'sessions#destroy'
 
   namespace :super_admin do
     resources :users

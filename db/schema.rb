@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114080317) do
+ActiveRecord::Schema.define(version: 20140115045129) do
 
   create_table "app_company_users", force: true do |t|
     t.integer  "app_id"
@@ -55,7 +55,10 @@ ActiveRecord::Schema.define(version: 20140114080317) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_super_admin"
+    t.string   "remember_token"
   end
+
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
   create_table "versions", force: true do |t|
     t.decimal  "number",          precision: 4, scale: 2
