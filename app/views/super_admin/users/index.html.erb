@@ -1,0 +1,9 @@
+<%=  link_to 'Create User', new_super_admin_user_path %>
+<% @users.each do |user| %>
+	<p>Name: <%= user.name %></p>
+	<p>Email: <%= user.email %></p>
+	<p>Companies</p>
+	<% user.companies.each do |company| %>
+		<p> <%= company.name %></p>
+	<% end %>
+<% end %>
