@@ -9,6 +9,7 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 	end
 
 	def create
+		binding.pry
 		@company = Company.create(company_parameters)
 		if @company.save
 			redirect_to super_admin_company_path(@company)
