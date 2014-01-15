@@ -18,10 +18,13 @@ AppManager::Application.routes.draw do
   get 'sign_out' => 'sessions#destroy'
 
   namespace :super_admin do
+    get 'home' => 'super_admin#index'
     resources :users
     resources :companies
     resources :apps
   end
+
+  get 'dashboard' => 'home#dashboard'
 
   namespace :admin do
     resources :users

@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 
 
+	def is_super_admin?
+		self.is_super_admin == true
+	end
+
 	private
 
     def create_remember_token
