@@ -2,6 +2,12 @@ class CompanyUsers < ActiveRecord::Base
 	has_many :appcompanyusers
 	has_many :apps, :through => :appcompanyusers
 
-	validates_presence_of :user_id, :company_id
+	validates_presence_of :user_id, :company_id, :role
+
+	ROLE = {
+	  ADMIN => "Admin",
+	  DEVELOPER => "Developer",
+	  MEMBER => "Member"
+  	}
 	
 end
