@@ -1,6 +1,6 @@
 class Company < ActiveRecord::Base
-	has_many :companyusers
-	has_many :users, :through => :companyusers
+	has_many :company_users
+	has_many :users, :through => :company_users
 	has_many :apps
 
 	validates_presence_of :name

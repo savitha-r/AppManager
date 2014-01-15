@@ -1,3 +1,4 @@
+<%=  link_to 'Home', super_admin_home_path %>
 <%=  link_to 'Create User', new_super_admin_user_path %>
 <% @users.each do |user| %>
 	<p>Name: <%= user.name %></p>

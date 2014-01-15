@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-	has_many :companyusers
-	has_many :companies, :through => :companyusers
+	has_many :company_users
+	has_many :companies, :through => :company_users
 
 	has_secure_password
 
@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 	def is_super_admin?
 		self.is_super_admin == true
 	end
+
 
 	private
 

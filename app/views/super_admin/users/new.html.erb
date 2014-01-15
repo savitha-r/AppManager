@@ -1,0 +1,35 @@
+<%= form_for @user, :as => :user, :url => super_admin_users_path(@user), :method => :post, :html => {:multipart => true } do |f| %>
+
+	<% if @user.errors.any? %>
+		<ul>
+  			<% @user.errors.full_messages.each do |msg| %>
+    			<li><%= msg %></li>
+  			<% end %>
+		</ul>
+	<% end %>
+
+
+	<div class="title-2"> 
+	      	<%= f.label :name, "Name*" %>
+	      	<%= f.text_field :name, :size => "30" %>
+	</div>
+
+	<div class="title-2"> 
+	      	<%= f.label :email, "Email*" %>
+	      	<%= f.text_field :email %>
+	</div>
+
+	<div class="title-2"> 
+	      	<%= f.label :password, "Password*" %>
+	      	<%= f.text_field :password, :size => "30" %>
+	</div>
+
+	<div class="title-2"> 
+	      	<%= f.label :password_confirmation, "Password Confirmation*" %>
+	      	<%= f.text_field :password_confirmation, :size => "30" %>
+	</div>
+
+
+	<%= f.submit "Submit", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
+
+<% end %>

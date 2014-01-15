@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
   def create
-  	if user.authenticate?
+  	user = User.find_by_email(params[:email])
+  	if user.authenticate(params[:password])
       sign_in user
       if user.is_super_admin?
       	redirect_to super_admin_home_path
