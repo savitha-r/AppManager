@@ -12,7 +12,12 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 		binding.pry
 		@company = Company.create(company_parameters)
 		if @company.save
-			redirect_to super_admin_company_path(@company)
+			@company.update_attributes(company_user_parameters)
+			if @company.save
+				redirect_to super_admin_company_path(@company)
+			else
+				render "new"
+			end
 		else
 			render "new"
 		end
@@ -29,6 +34,11 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 
 
 	private
+
+	def company_user_parameters
+		params.require(:company).permit(:user_ids => [])
+	end
+
 
 	def company_parameters
 		params.require(:company).permit(:name, :address, :phone, :max_admin, :is_active)

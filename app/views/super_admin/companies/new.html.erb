@@ -29,25 +29,11 @@
 	      	<%= f.check_box :is_active %>
 	</div>
 
-	<%= f.fields_for :company_users do |i| %>
-    	<div class="field">
-      	<%= i.label :name, "Admins" %><br />
-      	<%= i.collection_select(:id, User.all, :id, :name,{}, {:multiple => true}) %>
-    	</div>
-    <% end %>
-    <%= f.fields_for :company_users do |i| %>	
-    	<div class="field">
-      	<%= i.label :name, "Developers" %><br />
-      	<%= i.collection_select(:id, User.all, :id, :name,{}, {:multiple => true}) %>
-    	</div>
-    <% end %>
-    <%= f.fields_for :company_users do |i| %>	
-
-    	<div class="field">
-      	<%= i.label :name, "Members" %><br />
-      	<%= i.collection_select(:id, User.all, :id, :name,{}, {:multiple => true}) %>
-    	</div>
-  	<% end %>
+	<div class="field">
+     <%= f.label :user %><br>
+     <%= f.collection_select(:user_ids, User.all.collect, :id, :name, {:prompt => "Please select"}, {:multiple => true} ) %>
+	</div>
+  
 
 
 	<%= f.submit "Submit", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>

@@ -7,6 +7,16 @@ class CompanyUser < ActiveRecord::Base
 
 	validates_presence_of :user_id, :company_id, :role
 
+	before_create :set_defaults
+
+	MEMBER = "member"
+	DEVELOPER = "developer"
+	ADMIN = "admin"
+
+	def set_defaults
+		self.role = MEMBER
+	end
+
 	
 	
 end

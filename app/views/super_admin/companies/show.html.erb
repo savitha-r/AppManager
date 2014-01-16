@@ -5,6 +5,15 @@
 	<p>Address: <%= @company.address %></p>
 	<p>Max Admins: <%= @company.max_admin %></p>
 	<p>Active: <%= @company.is_active %></p>
+
+	<% @company.users.each do |user| %>
+		<p> Name: <%= user.name %></p>
+		<% user.company_users.each do |c_user| %>
+			<p> Role: <%= c_user.role %></p>
+		<% end %>
+	<% end %>	
+
+
 	
 	
 	
