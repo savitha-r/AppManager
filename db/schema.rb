@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117085233) do
+ActiveRecord::Schema.define(version: 20140117094029) do
 
   create_table "app_company_users", force: true do |t|
     t.integer  "app_id"
@@ -62,13 +62,16 @@ ActiveRecord::Schema.define(version: 20140117085233) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
   create_table "versions", force: true do |t|
-    t.decimal  "number",          precision: 4, scale: 2
-    t.string   "type"
+    t.decimal  "number",             precision: 4, scale: 2
+    t.string   "device_type"
     t.integer  "no_of_downloads"
     t.string   "download_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "app_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
 end
