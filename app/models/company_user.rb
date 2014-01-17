@@ -14,7 +14,9 @@ class CompanyUser < ActiveRecord::Base
 
 	before_validation :set_defaults
 	
-	
+	def name_with_role
+		"#{self.user.name} - #{self.role}"
+	end
 
 	def set_defaults
 		unless [MEMBER, DEVELOPER, ADMIN].include?self.role

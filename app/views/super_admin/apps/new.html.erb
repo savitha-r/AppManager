@@ -16,7 +16,7 @@
 
 	<div class="field">
      <%= f.label :members %><br>
-     <%= f.collection_select(:company_user_ids, User.all.collect, :id, :name, {:prompt => "Please select"}, {:multiple => true} ) %>
+     <%= f.collection_select(:company_user_ids, @company_users.collect, :id, :name_with_role, {:prompt => "Please select"}, {:multiple => true} ) %>
 	</div>
   
 
