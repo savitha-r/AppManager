@@ -1,0 +1,41 @@
+<%= form_for @company, :as => :company, :url => super_admin_company_path(@company), :method => :put, :html => {:multipart => true } do |f| %>
+
+	<% if @company.errors.any? %>
+		<ul>
+  			<% @company.errors.full_messages.each do |msg| %>
+    			<li><%= msg %></li>
+  			<% end %>
+		</ul>
+	<% end %>
+
+
+	<div class="title-2"> 
+	      	<%= f.label :name, "Name*" %>
+	      	<%= f.text_field :name, :size => "30" %>
+	</div>
+
+	<div class="title-2"> 
+	      	<%= f.label :address, "Address*" %>
+	      	<%= f.text_field :address %>
+	</div>
+
+	<div class="title-2"> 
+	      	<%= f.label :phone, "Phone*" %>
+	      	<%= f.text_field :phone, :size => "30" %>
+	</div>
+
+	<div class="title-2"> 
+	      	<%= f.label :is_active, "Company Is Active?" %>
+	      	<%= f.check_box :is_active %>
+	</div>
+
+	<div class="field">
+     <%= f.label :members %><br>
+     <%= f.collection_select(:user_ids, User.all.collect, :id, :name, {:prompt => "Please select"}, {:multiple => true} ) %>
+	</div>
+  
+
+
+	<%= f.submit "Save", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
+
+<% end %>

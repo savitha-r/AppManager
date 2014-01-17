@@ -22,6 +22,21 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 		end
 	end
 
+	def edit
+		@company = Company.find_by_id(params[:id])
+	end
+		
+	def update
+		binding.pry
+		@company = Company.find_by_id(params[:id])
+		@company.assign_attributes(company_user_parameters)
+		if @company.save
+			redirect_to super_admin_company_path(@company)
+		else
+			render "edit"
+		end
+	end
+
 	def show
 		@company = Company.find_by_id(params[:id])
 		@company_users = CompanyUser.find_all_by_company_id(@company.id)
@@ -36,7 +51,7 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 	private
 
 	def company_user_parameters
-		params.require(:company).permit(:user_ids => [])
+		params.require(:company).permit(:name, :address, :phone, :max_admin, :is_active, :user_ids => [])
 	end
 
 

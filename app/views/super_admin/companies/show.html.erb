@@ -10,7 +10,9 @@
 		<p> Name: <%= c_user.user.name %></p>
 		<p> Role: <%= c_user.role %></p>
 	<% end %>	
-	<%=  link_to 'Edit User Roles', super_admin_company_roles_path(@company) %>
+	<%= link_to 'Edit User Roles', super_admin_company_roles_path(@company) %>
+
+	<%= link_to 'Edit Company', edit_super_admin_company_path(@company) %>
 
 
 	

@@ -7,9 +7,13 @@ class SuperAdmin::CompanyUsersController < SuperAdmin::SuperAdminController
 
 	def update
 		@c_user = CompanyUser.find_by_id(params[:company_id])
-		@c_user.update_attributes(company_user_parameters)
-		@company = Company.find_by_id(@c_user.company_id)
-		redirect_to super_admin_company_path(@company)
+		@c_user.assign_attributes(company_user_parameters)
+		if @c_user.save
+			@company = Company.find_by_id(@c_user.company_id)
+			redirect_to super_admin_company_path(@company)
+		else
+			render "index"
+		end
 	end
 
 	private

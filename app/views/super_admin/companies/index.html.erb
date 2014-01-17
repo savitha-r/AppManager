@@ -1,7 +1,7 @@
 <%=  link_to 'Create Company', new_super_admin_company_path %>
 
 <% @companies.each do |company| %>
-<p>Name: <%= company.name %></p>
+<p>Name: <%= company.name %> <%=  link_to 'View', super_admin_company_path(company) %></p>
 <p>Users</p>
 <% company.users.each do |user| %>
 	<%= user.name %>
