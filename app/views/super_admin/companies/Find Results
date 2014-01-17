@@ -1,0 +1,15 @@
+Searching 10 files for "binding.pry"
+
+/Users/xx/Documents/Savitha/Savitha-Lab/AppManager/app/controllers/super_admin/apps_controller.rb:
+   13  			@app.assign_attributes(app_company_parameters)
+   14  			if @app.save
+   15: 				redirect_to super_admin_company_app_path(@company,@app)
+   17  			else
+
+/Users/xx/Documents/Savitha/Savitha-Lab/AppManager/app/controllers/super_admin/companies_controller.rb:
+   28  		
+   29  	def update
+   30: 		@company = Company.find_by_id(params[:id])
+   32  		@company.assign_attributes(company_user_parameters)
+
+2 matches across 2 files

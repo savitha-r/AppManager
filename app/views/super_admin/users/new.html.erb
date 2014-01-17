@@ -29,10 +29,7 @@
 	      	<%= f.text_field :password_confirmation, :size => "30" %>
 	</div>
 
-	<div class="title-2"> 
-	      	<%= f.label :company_users, "Admins" %>
-	      		<%= f.select :company_users, User.all.map {|x| [x.name, x.id]}, {}, :multiple => true %>
-	</div>
+	
 
 
 	<%= f.submit "Submit", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
