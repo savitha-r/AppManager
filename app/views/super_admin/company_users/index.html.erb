@@ -1,0 +1,12 @@
+<% @company_users.each do |c_user| %>
+<p> Name: <%= c_user.user.name %></p>
+
+<%= form_for c_user, :as => :company_user, :url => super_admin_company_save_path(c_user), :method => :put, :html => {:multipart => true } do |f| %>
+
+<%= f.label :role %><br>
+<%= f.select 'role', options_for_select(["member", "developer", "admin"].each_with_index.map {|name, index| [name,name]}) %>
+<%= f.submit "Save", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
+<% end %>
+
+
+<% end %>

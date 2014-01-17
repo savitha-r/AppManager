@@ -6,12 +6,11 @@
 	<p>Max Admins: <%= @company.max_admin %></p>
 	<p>Active: <%= @company.is_active %></p>
 
-	<% @company.users.each do |user| %>
-		<p> Name: <%= user.name %></p>
-		<% user.company_users.each do |c_user| %>
-			<p> Role: <%= c_user.role %></p>
-		<% end %>
+	<% @company_users.each do |c_user| %>
+		<p> Name: <%= c_user.user.name %></p>
+		<p> Role: <%= c_user.role %></p>
 	<% end %>	
+	<%=  link_to 'Edit User Roles', super_admin_company_roles_path(@company) %>
 
 
 	

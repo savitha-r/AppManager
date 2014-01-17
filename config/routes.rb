@@ -20,7 +20,12 @@ AppManager::Application.routes.draw do
   namespace :super_admin do
     get 'home' => 'super_admin#index'
     resources :users
-    resources :companies
+    resources :companies do
+        get 'roles' => "company_users#index"
+        put 'save' => "company_users#update"
+    end
+
+
     resources :apps
   end
 

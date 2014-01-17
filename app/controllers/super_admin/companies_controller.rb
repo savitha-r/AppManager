@@ -9,8 +9,7 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 	end
 
 	def create
-		binding.pry
-		@company = Company.create(company_parameters)
+		@company = Company.new(company_parameters)
 		if @company.save
 			@company.update_attributes(company_user_parameters)
 			if @company.save
@@ -25,6 +24,7 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 
 	def show
 		@company = Company.find_by_id(params[:id])
+		@company_users = CompanyUser.find_all_by_company_id(@company.id)
 	end
 
 	def destroy

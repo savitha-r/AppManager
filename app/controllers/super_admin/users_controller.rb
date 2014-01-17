@@ -9,7 +9,7 @@ class SuperAdmin::UsersController < SuperAdmin::SuperAdminController
 	end
 
 	def create
-		@user = User.create(user_parameters)
+		@user = User.new(user_parameters)
 		if @user.save
 			redirect_to super_admin_user_path(@user)
 		else

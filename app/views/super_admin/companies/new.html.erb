@@ -30,7 +30,7 @@
 	</div>
 
 	<div class="field">
-     <%= f.label :user %><br>
+     <%= f.label :members %><br>
      <%= f.collection_select(:user_ids, User.all.collect, :id, :name, {:prompt => "Please select"}, {:multiple => true} ) %>
 	</div>
   
