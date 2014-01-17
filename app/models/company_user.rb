@@ -2,8 +2,8 @@ class CompanyUser < ActiveRecord::Base
 	belongs_to :company
 	belongs_to :user
 
-	has_many :appcompanyusers
-	has_many :apps, :through => :appcompanyusers
+	has_many :app_company_users
+	has_many :apps, :through => :app_company_users
 
 	MEMBER = "member"
 	DEVELOPER = "developer"

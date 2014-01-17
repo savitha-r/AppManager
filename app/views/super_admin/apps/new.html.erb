@@ -1,0 +1,26 @@
+<%= form_for @app, :as => :app, :url => super_admin_company_apps_path(@company,@app), :method => :post, :html => {:multipart => true } do |f| %>
+
+	<% if @app.errors.any? %>
+		<ul>
+  			<% @app.errors.full_messages.each do |msg| %>
+    			<li><%= msg %></li>
+  			<% end %>
+		</ul>
+	<% end %>
+
+
+	<div class="title-2"> 
+	      	<%= f.label :name, "Name*" %>
+	      	<%= f.text_field :name, :size => "30" %>
+	</div>
+
+	<div class="field">
+     <%= f.label :members %><br>
+     <%= f.collection_select(:company_user_ids, User.all.collect, :id, :name, {:prompt => "Please select"}, {:multiple => true} ) %>
+	</div>
+  
+
+
+	<%= f.submit "Submit", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
+
+<% end %>

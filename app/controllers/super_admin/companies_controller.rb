@@ -11,7 +11,7 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 	def create
 		@company = Company.new(company_parameters)
 		if @company.save
-			@company.update_attributes(company_user_parameters)
+			@company.assign_attributes(company_user_parameters)
 			if @company.save
 				redirect_to super_admin_company_path(@company)
 			else

@@ -21,12 +21,16 @@ AppManager::Application.routes.draw do
     get 'home' => 'super_admin#index'
     resources :users
     resources :companies do
+        resources :apps
         get 'roles' => "company_users#index"
         put 'save' => "company_users#update"
     end
 
+    resources :apps, :only => [] do
+      resources :versions
+    end
 
-    resources :apps
+
   end
 
   get 'dashboard' => 'home#dashboard'
