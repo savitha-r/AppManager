@@ -36,7 +36,9 @@ AppManager::Application.routes.draw do
   get 'dashboard' => 'globalmembers#index'
 
   namespace :admin do
+
     resources :companies do
+      resources :users
       resources :apps
       get 'roles' => "company_users#index"
       put 'save' => "company_users#update"

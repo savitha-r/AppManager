@@ -1,0 +1,8 @@
+<p>Go Back To <%=  link_to 'Company', admin_company_path(@company) %></p>
+
+<p>Name: <%= @user.name %></p>
+	<p>Email: <%= @user.email %></p>
+	<p>Companies</p>
+	<% @user.companies.each do |company| %>
+		<p> <%= company.name %></p>
+	<% end %>
