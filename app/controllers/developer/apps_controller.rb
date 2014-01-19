@@ -1,5 +1,5 @@
-class SuperAdmin::AppsController < SuperAdmin::SuperAdminController
-	
+class Developer::AppsController < Developer::DevelopersController
+
 	def new
 		@company = Company.find_by_id(params[:company_id])
 		@company_users = CompanyUser.find_all_by_company_id(params[:company_id])
@@ -12,8 +12,7 @@ class SuperAdmin::AppsController < SuperAdmin::SuperAdminController
 		if @app.save
 			@app.assign_attributes(app_company_parameters)
 			if @app.save
-				binding.pry
-				redirect_to super_admin_company_app_path(@company,@app)
+				redirect_to developer_company_app_path(@company,@app)
 			else
 				render "new"
 			end

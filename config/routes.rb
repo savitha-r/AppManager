@@ -48,15 +48,19 @@ AppManager::Application.routes.draw do
   end
 
   namespace :developer do
-    resources :apps
-    resources :companies, :only => [:show, :index]
-    resources :users, :only => [:assign_apps]
+    resources :apps, :only => [] do
+      resources :versions
+    end
+    resources :companies, :only => [:show, :index] do
+      resources :apps
+    end
+    get 'roles' => "company_users#index"
+    put 'save' => "company_users#update"
   end
 
   namespace :member do
     resources :companies, :only => [:show, :index]
     resources :apps, :only => [:show, :index]
-    resources :versions, :only => [:download]
   end
 
 

@@ -1,5 +1,5 @@
-module Admin::AdminsHelper
-
+module Developer::DevelopersHelper
+  
   def set_company(company)
     cookies.permanent[:company_token] = company.id
     self.current_company = company
@@ -24,5 +24,4 @@ module Admin::AdminsHelper
   def current_company?(company)
       company == current_company
   end
-
 end
