@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117094029) do
+ActiveRecord::Schema.define(version: 20140119143214) do
 
   create_table "app_company_users", force: true do |t|
     t.integer  "app_id"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140117094029) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
+    t.string   "download_id"
   end
 
 end

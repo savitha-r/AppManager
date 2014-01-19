@@ -27,7 +27,9 @@ AppManager::Application.routes.draw do
     end
 
     resources :apps, :only => [] do
-      resources :versions
+      resources :versions do
+        get 'invite_by_email' => "versions#invite_by_email"
+      end
     end
 
 
@@ -45,13 +47,17 @@ AppManager::Application.routes.draw do
     end
     resources :users
     resources :apps, :only => [] do
-      resources :versions
+      resources :versions do
+        get 'invite_by_email' => "versions#invite_by_email"
+      end
     end
   end
 
   namespace :developer do
     resources :apps, :only => [] do
-      resources :versions
+      resources :versions do
+        get 'invite_by_email' => "versions#invite_by_email"
+      end
     end
     resources :companies, :only => [:show, :index] do
       resources :apps
@@ -63,6 +69,8 @@ AppManager::Application.routes.draw do
     resources :companies, :only => [:show]
     resources :apps, :only => [:show, :index]
   end
+  get '/email-:vid' => 'home#download_email'
+  get '/:vid' => 'home#download'
 
 
   # Example resource route with options:
