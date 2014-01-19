@@ -55,9 +55,8 @@ AppManager::Application.routes.draw do
     end
     resources :companies, :only => [:show, :index] do
       resources :apps
+      resources :users
     end
-    get 'roles' => "company_users#index"
-    put 'save' => "company_users#update"
   end
 
   namespace :member do

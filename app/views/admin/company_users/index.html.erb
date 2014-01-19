@@ -1,4 +1,4 @@
-<% if @c_user.errors.any? %>
+<% if @c_user and @c_user.errors.any? %>
 		<ul>
   			<% @c_user.errors.full_messages.each do |msg| %>
     			<li><%= msg %></li>
