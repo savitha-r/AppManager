@@ -1,0 +1,24 @@
+<%= link_to 'Dashboard', dashboard_path %>
+<p>Name: <%= @company.name %></p>
+	<p>Phone: <%= @company.phone %></p>
+	<p>Address: <%= @company.address %></p>
+	<p>Max Admins: <%= @company.max_admin %></p>
+	<p>Active: <%= @company.is_active %></p>
+
+	<h3>Users </h3>
+
+	<% @company_users.each do |c_user| %>
+		<p> Name: <%= c_user.user.name %></p>
+		<p> Role: <%= c_user.role %></p>
+	<% end %>	
+
+	<h3>Applications</h3>
+
+	<% @company.apps.each do |app| %>
+		<p> Name: <%= app.name %></p>
+		<%= link_to 'View App Details', member_company_app_path(@company,app) %>
+	<% end %>	
+
+	
+
+	

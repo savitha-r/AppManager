@@ -59,7 +59,7 @@ AppManager::Application.routes.draw do
   end
 
   namespace :member do
-    resources :companies, :only => [:show, :index]
+    resources :companies, :only => [:show]
     resources :apps, :only => [:show, :index]
   end
 

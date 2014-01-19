@@ -1,0 +1,2 @@
+module Member::AppsHelper
+end
