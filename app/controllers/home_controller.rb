@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
 	def download
 		vid = params[:vid].split('-')
-		@version = Version.find_by_id(vid[0])
+		@version = get_entity Version.find_by_id(vid[0])
 		if @version.download_id == vid[1]
 			redirect_to @version.photo.url
 		else
@@ -23,7 +23,7 @@ class HomeController < ApplicationController
 
 	def download_email
 		vid = params[:vid].split('-')
-		@version = Version.find_by_id(vid[1])
+		@version = get_entity Version.find_by_id(vid[1])
 		if @version.download_id == vid[2]
 			redirect_to @version.photo.url
 		else

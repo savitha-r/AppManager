@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+  class NotFound < StandardError
+  end
+
+  rescue_from NotFound, :with => :custom_error
+ 
   def default_url_options
     if Rails.env.development?
       {:host => "http://localhost:3000"}
@@ -20,7 +25,16 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  
- 
+  def get_entity entity
+  	raise NotFound unless entity.present?
+    return entity
+  end
+
+  def custom_error
+  	render "public/404", :status => 404
+  end
+
   
 end
+
+

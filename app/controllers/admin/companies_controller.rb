@@ -22,11 +22,11 @@ class Admin::CompaniesController < Admin::AdminsController
 	end
 
 	def edit
-		@company = Company.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:id])
 	end
 		
 	def update
-		@company = Company.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:id])
 		@company.assign_attributes(company_user_parameters)
 		if @company.save
 			redirect_to admin_company_path(@company)
@@ -36,10 +36,10 @@ class Admin::CompaniesController < Admin::AdminsController
 	end
 
 	def show
-		set_company(Company.find_by_id(params[:id]))
+		set_company(get_entity Company.find_by_id(params[:id]))
 		@company = current_company
 		@user = current_user
-		@company_users = CompanyUser.find_all_by_company_id(@company.id)
+		@company_users = get_entity CompanyUser.find_all_by_company_id(@company.id)
 	end
 
 	private
@@ -54,9 +54,9 @@ class Admin::CompaniesController < Admin::AdminsController
 	end
 
 	def check_inactive_company
-		@company_users = CompanyUser.where(:user_id => current_user.id, :role => "admin")
+		@company_users = get_entity CompanyUser.where(:user_id => current_user.id, :role => "admin")
 		@company_users.each do |c_user|
-			@company = Company.find_by_id(c_user.company_id)
+			@company = get_entity Company.find_by_id(c_user.company_id)
 			unless @company.is_active
 				flash[:notice] = "You already have an inactive company waiting for approval. Please wait for its approval before proceeding."
 				redirect_to root_path

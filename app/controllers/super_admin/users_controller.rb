@@ -18,11 +18,11 @@ class SuperAdmin::UsersController < SuperAdmin::SuperAdminController
 	end
 
 	def show
-		@user = User.find_by_id(params[:id])
+		@user = get_entity User.find_by_id(params[:id])
 	end
 
 	def destroy
-		@user = User.find_by_id(params[:id])
+		@user = get_entity User.find_by_id(params[:id])
 		@user.destroy
 	end
 

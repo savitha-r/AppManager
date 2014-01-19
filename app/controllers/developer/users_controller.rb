@@ -1,12 +1,12 @@
 class Developer::UsersController < Developer::DevelopersController
 
 	def new
-		@company = Company.find_by_id(params[:company_id])
+		@company = get_entity Company.find_by_id(params[:company_id])
 		@user = User.new
 	end
 
 	def create
-		@company = Company.find_by_id(params[:company_id])
+		@company = get_entity Company.find_by_id(params[:company_id])
 		@user = User.new(user_parameters)
 		if @user.save
 			@user.companies.push(@company)
@@ -21,8 +21,8 @@ class Developer::UsersController < Developer::DevelopersController
 	end
 
 	def show
-		@company = Company.find_by_id(params[:company_id])
-		@user = User.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:company_id])
+		@user = get_entity User.find_by_id(params[:id])
 	end
 
 	private

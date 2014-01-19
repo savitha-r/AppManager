@@ -23,12 +23,11 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 	end
 
 	def edit
-		@company = Company.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:id])
 	end
 		
 	def update
-		binding.pry
-		@company = Company.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:id])
 		@company.assign_attributes(company_user_parameters)
 		if @company.save
 			redirect_to super_admin_company_path(@company)
@@ -38,12 +37,12 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 	end
 
 	def show
-		@company = Company.find_by_id(params[:id])
-		@company_users = CompanyUser.find_all_by_company_id(@company.id)
+		@company = get_entity Company.find_by_id(params[:id])
+		@company_users = get_entity CompanyUser.find_all_by_company_id(@company.id)
 	end
 
 	def destroy
-		@company = Company.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:id])
 		@company.destroy
 	end
 

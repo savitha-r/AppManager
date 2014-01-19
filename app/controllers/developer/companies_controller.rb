@@ -21,11 +21,11 @@ class Developer::CompaniesController < Developer::DevelopersController
 	end
 
 	def edit
-		@company = Company.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:id])
 	end
 		
 	def update
-		@company = Company.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:id])
 		@company.assign_attributes(company_user_parameters)
 		if @company.save
 			redirect_to developer_company_path(@company)
@@ -35,10 +35,10 @@ class Developer::CompaniesController < Developer::DevelopersController
 	end
 
 	def show
-		set_company(Company.find_by_id(params[:id]))
+		set_company(get_entity Company.find_by_id(params[:id]))
 		@company = current_company
 		@user = current_user
-		@company_users = CompanyUser.find_all_by_company_id(@company.id)
+		@company_users = get_entity CompanyUser.find_all_by_company_id(@company.id)
 	end
 
 	private

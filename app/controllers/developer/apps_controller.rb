@@ -1,13 +1,13 @@
 class Developer::AppsController < Developer::DevelopersController
 
 	def new
-		@company = Company.find_by_id(params[:company_id])
-		@company_users = CompanyUser.find_all_by_company_id(params[:company_id])
+		@company = get_entity Company.find_by_id(params[:company_id])
+		@company_users = get_entity CompanyUser.find_all_by_company_id(params[:company_id])
 		@app = App.new
 	end
 
 	def create
-		@company = Company.find_by_id(params[:company_id])
+		@company = get_entity Company.find_by_id(params[:company_id])
 		@app = @company.apps.build(app_parameters)
 		if @app.save
 			@app.assign_attributes(app_company_parameters)
@@ -22,8 +22,8 @@ class Developer::AppsController < Developer::DevelopersController
 	end
 
 	def show
-		@company = Company.find_by_id(params[:company_id])
-		@app = App.find_by_id(params[:id])
+		@company = get_entity Company.find_by_id(params[:company_id])
+		@app = get_entity App.find_by_id(params[:id])
 		@host = default_url_options[:host]
 	end
 
