@@ -24,11 +24,6 @@
 	      	<%= f.text_field :phone, :size => "30" %>
 	</div>
 
-	<div class="title-2"> 
-	      	<%= f.label :is_active, "Company Is Active?" %>
-	      	<%= f.check_box :is_active %>
-	</div>
-
 	<div class="field">
      <%= f.label :members %><br>
      <%= f.collection_select(:user_ids, User.all.collect, :id, :name, {:prompt => "Please select"}, {:multiple => true} ) %>

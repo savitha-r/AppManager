@@ -13,6 +13,8 @@ class CompanyUser < ActiveRecord::Base
 	validates_inclusion_of :role, :in => [MEMBER, DEVELOPER, ADMIN]
 
 	before_validation :set_defaults
+
+	validate :check_max_admin
 	
 	def name_with_role
 		"#{self.user.name} - #{self.role}"
@@ -32,6 +34,15 @@ class CompanyUser < ActiveRecord::Base
 		self.role == DEVELOPER
 	end
 
+	def check_max_admin
+		if self.role == ADMIN
+			@company = Company.find_by_id(self.company_id)
+			@company_users = CompanyUser.where(:company_id => self.company_id, :role => ADMIN)
+			if @company_users.length >= @company.max_admin
+				self.errors.add(:role, "Max Admins has already been reached for this company.")
+			end
+		end
+	end
 	
 	
 end

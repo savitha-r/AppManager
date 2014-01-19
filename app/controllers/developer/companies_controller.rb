@@ -1,4 +1,6 @@
 class Developer::CompaniesController < Developer::DevelopersController
+	before_filter :check_developer_user, :except => [:show]
+	before_filter :check_inactive_company, :only => [:new,:create]
 
 	def new
 		@company = Company.new
@@ -23,7 +25,6 @@ class Developer::CompaniesController < Developer::DevelopersController
 	end
 		
 	def update
-		binding.pry
 		@company = Company.find_by_id(params[:id])
 		@company.assign_attributes(company_user_parameters)
 		if @company.save
@@ -49,6 +50,17 @@ class Developer::CompaniesController < Developer::DevelopersController
 
 	def company_parameters
 		params.require(:company).permit(:name, :address, :phone, :max_admin, :is_active)
+	end
+
+	def check_inactive_company
+		@company_users = CompanyUser.where(:user_id => current_user.id, :role => "admin")
+		@company_users.each do |c_user|
+			@company = Company.find_by_id(c_user.company_id)
+			unless @company.is_active
+				flash[:notice] = "You already have an inactive company waiting for approval. Please wait for its approval before proceeding."
+				redirect_to root_path
+			end
+		end
 	end
 
 end

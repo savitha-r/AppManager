@@ -7,7 +7,10 @@ class SuperAdmin::SuperAdminController < ApplicationController
 	private
 
 	def check_super_admin_user
-		return current_user.is_super_admin?
+		unless current_user.is_super_admin?
+			flash[:notice] = "You do have access to Super Admin methods"
+			redirect_to root_path
+		end
 	end
 
 end

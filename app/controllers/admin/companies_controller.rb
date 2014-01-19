@@ -1,5 +1,7 @@
 class Admin::CompaniesController < Admin::AdminsController
-
+	before_filter :check_admin_user, :except => [:show, :new, :create]
+	before_filter :check_inactive_company, :only => [:new,:create]
+	
 	def new
 		@company = Company.new
 	end
@@ -8,6 +10,7 @@ class Admin::CompaniesController < Admin::AdminsController
 		@company = Company.new(company_parameters)
 		if @company.save
 			@company.assign_attributes(company_user_parameters)
+			@company.assign_admin(current_user)
 			if @company.save
 				redirect_to admin_company_path(@company)
 			else
@@ -23,7 +26,6 @@ class Admin::CompaniesController < Admin::AdminsController
 	end
 		
 	def update
-		binding.pry
 		@company = Company.find_by_id(params[:id])
 		@company.assign_attributes(company_user_parameters)
 		if @company.save
@@ -49,6 +51,17 @@ class Admin::CompaniesController < Admin::AdminsController
 
 	def company_parameters
 		params.require(:company).permit(:name, :address, :phone, :max_admin, :is_active)
+	end
+
+	def check_inactive_company
+		@company_users = CompanyUser.where(:user_id => current_user.id, :role => "admin")
+		@company_users.each do |c_user|
+			@company = Company.find_by_id(c_user.company_id)
+			unless @company.is_active
+				flash[:notice] = "You already have an inactive company waiting for approval. Please wait for its approval before proceeding."
+				redirect_to root_path
+			end
+		end
 	end
 
 end
