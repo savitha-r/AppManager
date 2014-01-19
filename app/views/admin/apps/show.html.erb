@@ -1,0 +1,15 @@
+<%=  link_to 'Go to Company', admin_company_path(@company) %>
+<p>Name: <%= @app.name %> </p>
+<h3>Versions</h3>
+
+<% @app.versions.each do |v| %>
+<p> Version <%= v.number %>
+<p> Device <%= v.device_type %>
+<%=  link_to 'Download', v.photo.url %>
+
+<% end %>
+
+<br>
+<br>
+<br>
+<%=  link_to 'Add Version', new_admin_app_version_path(@app) %>

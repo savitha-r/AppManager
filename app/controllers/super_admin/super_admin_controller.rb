@@ -7,7 +7,7 @@ class SuperAdmin::SuperAdminController < ApplicationController
 	private
 
 	def check_super_admin_user
-		current_user.is_super_admin?
+		return current_user.is_super_admin?
 	end
 
 end

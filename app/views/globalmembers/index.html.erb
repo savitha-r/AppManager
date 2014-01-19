@@ -1,0 +1,15 @@
+<% @company_users.each do |c_user| %>
+
+<p> Company: <%= c_user.company.name %> </p>
+<p> Role: <%= c_user.role %> </p>
+<% if c_user.is_admin? %>
+<%=  link_to 'View As Admin', admin_company_path(c_user.company) %>
+<% elsif c_user.is_developer? %>
+<%=  link_to 'View As Developer', developer_company_path(c_user.company) %>
+<% else %>
+<%=  link_to 'View As Member', member_company_path(c_user.company) %>
+<% end %>
+
+<% end %>
+
+

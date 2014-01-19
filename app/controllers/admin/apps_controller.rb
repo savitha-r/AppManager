@@ -1,5 +1,4 @@
-class SuperAdmin::AppsController < SuperAdmin::SuperAdminController
-	before_filter :check_super_admin_user
+class Admin::AppsController < Admin::AdminsController
 
 	def new
 		@company = Company.find_by_id(params[:company_id])
@@ -13,8 +12,7 @@ class SuperAdmin::AppsController < SuperAdmin::SuperAdminController
 		if @app.save
 			@app.assign_attributes(app_company_parameters)
 			if @app.save
-				binding.pry
-				redirect_to super_admin_company_app_path(@company,@app)
+				redirect_to admin_company_app_path(@company,@app)
 			else
 				render "new"
 			end

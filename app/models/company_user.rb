@@ -24,6 +24,14 @@ class CompanyUser < ActiveRecord::Base
 		end
 	end
 
+	def is_admin?
+		self.role == ADMIN
+	end
+
+	def is_developer?
+		self.role == DEVELOPER
+	end
+
 	
 	
 end

@@ -1,0 +1,33 @@
+<%= form_for @version, :as => :version, :url => admin_app_versions_path(@app,@version), :method => :post, :html => {:multipart => true } do |f| %>
+
+	<% if @version.errors.any? %>
+		<ul>
+  			<% @version.errors.full_messages.each do |msg| %>
+    			<li><%= msg %></li>
+  			<% end %>
+		</ul>
+	<% end %>
+
+
+	<div class="title-2"> 
+	      	<%= f.label :number, "Name*" %>
+	      	<%= f.text_field :number, :size => "30" %>
+	</div>
+
+	<div class="title-2"> 
+	      	<%= f.label :device_type, "Type*" %>
+	      	<%= f.select 'device_type', options_for_select(["ios", "android"].each_with_index.map {|name, index| [name,name]}) %>
+	</div>
+
+	
+
+	<div class="field">
+     <%= f.label :uoload_file %><br>
+     <%= f.file_field :photo %>
+	</div>
+  
+
+
+	<%= f.submit "Submit", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
+
+<% end %>
