@@ -16,12 +16,13 @@ class Developer::VersionsController < Developer::DevelopersController
 	end
 
 	def invite_by_email
+		@host = default_url_options[:host]
 		@app = get_entity App.find_by_id(params[:app_id])
 		@version = get_entity Version.find_by_id(params[:version_id])
 		emails = params[:emails].split(',')
 		emails.each do |mail|
 			if is_valid_email?(mail)
-				AppManagerMailer.invite_app_email(@version.app,@version, mail).deliver
+				AppManagerMailer.invite_app_email(@version.app,@version, mail, @host).deliver
 			else
 				flash[:notice] = "#{mail} is not a valid email. Please correct it and try again."
 				break
