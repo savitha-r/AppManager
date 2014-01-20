@@ -18,7 +18,6 @@ class Developer::VersionsController < Developer::DevelopersController
 	def invite_by_email
 		@app = get_entity App.find_by_id(params[:app_id])
 		@version = get_entity Version.find_by_id(params[:version_id])
-		binding.pry
 		emails = params[:emails].split(',')
 		emails.each do |mail|
 			if is_valid_email?(mail)

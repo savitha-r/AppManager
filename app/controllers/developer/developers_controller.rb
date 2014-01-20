@@ -4,7 +4,6 @@ class Developer::DevelopersController < ApplicationController
 	include Developer::DevelopersHelper
 
 	def check_developer_user
-		binding.pry
 		company_user = CompanyUser.where(:company_id => current_company.id, :user_id => current_user.id, :role => CompanyUser::DEVELOPER)
 		unless company_user.length > 0
 			flash[:notice] = "You do not have developer access to the #{current_company.name} Company."
