@@ -2,7 +2,7 @@ class Developer::AppsController < Developer::DevelopersController
 
 	def new
 		@company = get_entity Company.find_by_id(params[:company_id])
-		@company_users = get_entity CompanyUser.find_all_by_company_id(params[:company_id])
+		@company_users = CompanyUser.find_all_by_company_id(params[:company_id])
 		@app = App.new
 	end
 

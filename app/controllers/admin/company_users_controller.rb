@@ -2,7 +2,7 @@ class Admin::CompanyUsersController < Admin::AdminsController
 
 	def index
 		@company = get_entity Company.find_by_id(params[:company_id])
-		@company_users = get_entity CompanyUser.find_all_by_company_id(@company.id)
+		@company_users = CompanyUser.find_all_by_company_id(@company.id)
 	end
 
 	def update
@@ -13,7 +13,7 @@ class Admin::CompanyUsersController < Admin::AdminsController
 		if @c_user.save
 			redirect_to admin_company_path(@company)
 		else
-			@company_users = get_entity CompanyUser.find_all_by_company_id(@company.id)
+			@company_users = CompanyUser.find_all_by_company_id(@company.id)
 			render "index"
 		end
 	end

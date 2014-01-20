@@ -10,7 +10,7 @@ class Company < ActiveRecord::Base
 	def assign_admin(user)
 		@company_user = self.company_users.find_by_user_id(user.id)
 		if @company_user
-			@company_user.role = "admin"
+			@company_user.role = CompanyUser::ADMIN
 			@company_user.save
 		end
 	end

@@ -38,7 +38,7 @@ class SuperAdmin::CompaniesController < SuperAdmin::SuperAdminController
 
 	def show
 		@company = get_entity Company.find_by_id(params[:id])
-		@company_users = get_entity CompanyUser.find_all_by_company_id(@company.id)
+		@company_users = CompanyUser.find_all_by_company_id(@company.id)
 	end
 
 	def destroy

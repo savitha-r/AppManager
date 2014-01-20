@@ -20,10 +20,10 @@ class Version < ActiveRecord::Base
 	 end
 
 	 def direct_download_link
-	 	self.id.to_s + '-' + self.download_id
+	 	'app/' + self.id.to_s + '-' + self.download_id
 	 end
 
 	 def email_download_link
-	 	'email-' + self.direct_download_link
+	 	'app/email-' + self.direct_download_link
 	 end
 end

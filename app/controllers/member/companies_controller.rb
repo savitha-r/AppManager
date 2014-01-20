@@ -7,11 +7,11 @@ class Member::CompaniesController < Member::MembersController
 		set_company(get_entity Company.find_by_id(params[:id]))
 		@company = current_company
 		@user = current_user
-		@company_users = get_entity CompanyUser.find_all_by_company_id(@company.id)
+		@company_users = CompanyUser.find_all_by_company_id(@company.id)
 	end
 
 	def check_inactive_company
-		@company_users = get_entity CompanyUser.where(:user_id => current_user.id, :role => "admin")
+		@company_users = CompanyUser.where(:user_id => current_user.id, :role => CompanyUser::ADMIN)
 		@company_users.each do |c_user|
 			@company = get_entity Company.find_by_id(c_user.company_id)
 			unless @company.is_active

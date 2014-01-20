@@ -12,7 +12,7 @@
 	<% end %>
 
 <%= f.label :role %><br>
-<%= f.select 'role', options_for_select(["member", "developer", "admin"].each_with_index.map {|name, index| [name,name]}, c_user.role) %>
+<%= f.select 'role', options_for_select([CompanyUser::MEMBER, CompanyUser::DEVELOPER, CompanyUser::ADMIN].each_with_index.map {|name, index| [name,name]}, c_user.role) %>
 <%= f.submit "Save", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
 <% end %>
 
