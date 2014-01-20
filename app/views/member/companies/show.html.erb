@@ -16,7 +16,7 @@
 
 	<% @company.apps.each do |app| %>
 		<p> Name: <%= app.name %></p>
-		<%= link_to 'View App Details', member_company_app_path(@company,app) %>
+		<%= link_to 'View App Details', member_app_path(app) %>
 	<% end %>	
 
 	

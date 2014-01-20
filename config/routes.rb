@@ -70,11 +70,9 @@ AppManager::Application.routes.draw do
     resources :apps, :only => [:show, :index]
   end
 
-  namespace :app do
-    get '/email-:vid' => 'home#download_email'
-    get '/:vid' => 'home#download'
-  end
-
+  get '/email-:vid' => 'home#download_email'
+  get '/:vid' => 'home#download'
+  
 
   # Example resource route with options:
   #   resources :products do
