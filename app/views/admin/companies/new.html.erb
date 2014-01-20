@@ -24,6 +24,8 @@
 	      	<%= f.text_field :phone, :size => "30" %>
 	</div>
 
+
+	<!-- why members here? what do members here mean? admin/dev/normal_member? if so, it can only assign after being admin -->
 	<div class="field">
      <%= f.label :members %><br>
      <%= f.collection_select(:user_ids, User.all.collect, :id, :name, {:prompt => "Please select"}, {:multiple => true} ) %>

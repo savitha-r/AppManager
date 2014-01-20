@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # why is it here? is it part of ApplicationController?
+  # you can always ask if this method has anything to do with request
+  # if not, it's probably not part of this class.
+  # This is Single Responsibility Principle (SRP)
   def is_valid_email?(string)
   	email = /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
   	if string.match(email)

@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::AdminsController
-	
+# edit/update/destroy?	
 	def new
 		@company = get_entity Company.find_by_id(params[:company_id])
 		@user = User.new

@@ -1,5 +1,5 @@
 class Admin::VersionsController < Admin::AdminsController
-
+# where are edit/update/destroy?
 	def new
 		@app = get_entity App.find_by_id(params[:app_id])
 		@version = Version.new
@@ -21,6 +21,7 @@ class Admin::VersionsController < Admin::AdminsController
 		emails = params[:emails].split(',')
 		emails.each do |mail|
 			if is_valid_email?(mail)
+				# should have move this to worker instead
 				AppManagerMailer.invite_app_email(@version.app,@version, mail).deliver
 			else
 				flash[:notice] = "#{mail} is not a valid email. Please correct it and try again."

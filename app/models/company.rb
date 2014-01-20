@@ -1,10 +1,11 @@
 class Company < ActiveRecord::Base
-	has_many :company_users
+	has_many :company_users # dependency
 	has_many :users, :through => :company_users
 	has_many :apps
 
 	validates_presence_of :name
 
+	#this is not right
 	before_create :set_default
 
 	def assign_admin(user)
@@ -18,6 +19,17 @@ class Company < ActiveRecord::Base
 
 
 private
+
+# your model is shared by all controller, whether it's admin/normal user. 
+# doing this means you can't initialize what you want in admin
+# what you can do
+	# def self.initiate_with_default(args)
+	# 	temp = Company.new(args)
+	# 	temp.is_active = false
+	# 	temp.max_admin = 2
+	# 	temp
+	# end
+
 
 def set_default
 	self.is_active = false

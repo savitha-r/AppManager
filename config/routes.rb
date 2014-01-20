@@ -18,10 +18,13 @@ AppManager::Application.routes.draw do
   get 'sign_out' => 'sessions#destroy'
 
   namespace :super_admin do
+
+    # don't need home if you have root
     get 'home' => 'super_admin#index'
     resources :users
     resources :companies do
         resources :apps
+        # why not resources with limited routes?
         get 'roles' => "company_users#index"
         put 'save' => "company_users#update"
     end
@@ -32,6 +35,7 @@ AppManager::Application.routes.draw do
       end
     end
 
+    # there should be a root to super_admin here
 
   end
 
@@ -51,6 +55,8 @@ AppManager::Application.routes.draw do
         get 'invite_by_email' => "versions#invite_by_email"
       end
     end
+
+    # should have a root too
   end
 
   namespace :developer do

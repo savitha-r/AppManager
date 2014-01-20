@@ -1,0 +1,19 @@
+* interface
+	- the presentation/layout is plain and unorganized: hard to navigate (almost unusable)
+	- it shouldn't be to hard/time consuming to use bootstrap 
+	- "You do not have admin access to the ete Company.", but there are still links to manage resources
+	- superadmin can't edit company user roles (blank)
+	- admin interface has only "sign out" and "create company"
+	- no file upload check
+	-
+
+
+* system design
+	- no company creator
+	- http://localhost:3000/2-8b15 is not clear (no path indication). note: this is not card reader we use to do
+
+* specs
+	- user can register inactive companies more than one!
+
+
+

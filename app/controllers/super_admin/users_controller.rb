@@ -1,5 +1,6 @@
 class SuperAdmin::UsersController < SuperAdmin::SuperAdminController
-
+	# where are the "edit" and "update" actions?
+	
 	def index
 		@users = User.all
 	end

@@ -1,4 +1,15 @@
+
+<!-- 
+	why use this form like this? why with path and method?
+	you can simply use:
+	form_for [:super_admin, @user] do |f|
+ -->
 <%= form_for @user, :as => :user, :url => super_admin_users_path(@user), :method => :post, :html => {:multipart => true } do |f| %>
+
+	<!-- 
+		we also used to discuss about this that we shouldn't replicate this everywehere.
+		it should be shared across the views
+	 -->
 
 	<% if @user.errors.any? %>
 		<ul>
@@ -19,6 +30,7 @@
 	      	<%= f.text_field :email %>
 	</div>
 
+	<!-- why password and password confirmation in clear plain text?? -->
 	<div class="title-2"> 
 	      	<%= f.label :password, "Password*" %>
 	      	<%= f.text_field :password, :size => "30" %>
@@ -31,7 +43,7 @@
 
 	
 
-
+	<!-- I guess you copied this form from some old projects.... -->
 	<%= f.submit "Submit", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; float:left; margin-right:180px;" %>
 
 <% end %>
