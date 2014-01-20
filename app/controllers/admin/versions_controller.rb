@@ -27,7 +27,7 @@ class Admin::VersionsController < Admin::AdminsController
 				break
 			end
 		end
-		redirect_to developer_company_app_path(@app.company, @app)
+		redirect_to admin_company_app_path(@app.company, @app)
 	end
 
 	private

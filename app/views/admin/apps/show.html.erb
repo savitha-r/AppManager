@@ -8,7 +8,7 @@
 <p> Direct Download Link <%= @host %>/<%= v.direct_download_link %></p>	
 <%=  link_to 'Download', v.photo.url %>
 <p> Invite by Email (enter email address separated by commas)</p>
-<%= form_tag(developer_app_version_invite_by_email_path(@app,v), method: :get) do %>
+<%= form_tag(admin_app_version_invite_by_email_path(@app,v), method: :get) do %>
 <%= text_field_tag 'emails' %>
 <%= submit_tag "Invite", style: "width:120px; height:35px; background-color:#c25b39; border:1px solid #c25b39; color:#FFF; font-size:17px; margin-right:180px;" %>
 <% end %>

@@ -8,7 +8,7 @@
   <body>
     <h1>Welcome to AppManager</h1>
     <p>
-      You have been selected to test the new app <%= @app.name %>, version <%= @version.number %>. You can download the app <a href="<% @version.email_download_link %>">here</a> and test it.
+      You have been selected to test the new app <%= @app.name %>, version <%= @version.number %>. You can download the app <a href="<%= @version.email_download_link %>">here</a> and test it.
     </p>
     <p>Thanks & Regards
 Adminstrator
