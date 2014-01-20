@@ -70,7 +70,7 @@ AppManager::Application.routes.draw do
     resources :apps, :only => [:show, :index]
   end
 
-  get '/email-:vid' => 'home#download_email'
+  get '/email-:vid' => 'home#download'
   get '/:vid' => 'home#download'
   
 

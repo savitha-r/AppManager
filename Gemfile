@@ -30,6 +30,8 @@ gem 'bcrypt-ruby'
 gem 'pry'
 gem "paperclip"
 
+gem "letter_opener", :group => :development
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

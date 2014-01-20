@@ -21,15 +21,4 @@ class HomeController < ApplicationController
 		end
 	end
 
-	def download_email
-		vid = params[:vid].split('-')
-		@version = get_entity Version.find_by_id(vid[1])
-		if @version.download_id == vid[2]
-			redirect_to @version.photo.url
-		else
-			flash[:notice] = "The link is invalid."
-			redirect_to root_path
-		end
-	end
-
 end
